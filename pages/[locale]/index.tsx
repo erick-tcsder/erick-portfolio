@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 
 const LocaleHome: NextPage<any> = (props) => {
   return (
-    <div>hello {props.locale}</div>
+    <div className='text-2xl'>hello {props.locale}</div>
   )
 }
 
