@@ -1,6 +1,7 @@
 import { createClient } from 'contentful'
 import type { GetServerSideProps, NextPage } from 'next'
 import { useEffect } from 'react'
+import { TypeHeroSectionFields } from '../../types'
 
 const LocaleHome: NextPage<any> = (props) => {
   useEffect(()=>{
@@ -22,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx)=>{
     locale: 'en-US',
   })
 
-  const hero = await client.getEntries({
+  const hero = await client.getEntries<TypeHeroSectionFields>({
     content_type: 'heroSection',
     select: ['fields.name','fields.description'],
     locale: 'es-ES'
@@ -34,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx)=>{
   return {
     props: {
       locale: ctx?.params?.locale,
-      obj: hero.items[0].fields
+      obj: hero.items[0]
     }
   }
 }

@@ -5,3 +5,4 @@ export type { TypeHeroSection, TypeHeroSectionFields } from "./TypeHeroSection";
 export type { TypeInfoSection, TypeInfoSectionFields } from "./TypeInfoSection";
 export type { TypeTechnology, TypeTechnologyFields } from "./TypeTechnology";
 export type { TypeWorkLabel, TypeWorkLabelFields } from "./TypeWorkLabel";
+export type { TypeSocial, TypeSocialFields } from './TypeSocial'
