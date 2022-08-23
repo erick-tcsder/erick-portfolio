@@ -7,3 +7,9 @@ export interface TypeSocialFields {
 }
 
 export type TypeSocial = Contentful.Entry<TypeSocialFields>;
+
+export interface SocialReducedFields {
+    name: string;
+    url: string;
+    icon?: string;
+}
