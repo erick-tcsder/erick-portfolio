@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 const Home: NextPage = () => {
   
   useEffect(()=>{
-    Router.replace('/en/')
+    Router.replace('/en-US')
   },[])
   return null
 }
