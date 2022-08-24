@@ -18,7 +18,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.54.5",
-    "sweetalert2": "^11.4.29"
+    "sweetalert2": "^11.4.29",
+    "swr": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
