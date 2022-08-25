@@ -1,3 +1,4 @@
+import { TypeMenuItem } from "../../types/TypeMenuItem";
 import { TypeSocial } from "../../types/TypeSocial";
 import { Icon } from "../atoms/Icon";
 import Link from "../atoms/Link";
@@ -6,22 +7,19 @@ export interface MainLayoutProps {
   mail: string;
   socials: TypeSocial[];
   children: React.ReactNode;
-  menuItems: {
-    name: string;
-    link: string;
-  }[];
+  menuItems: TypeMenuItem[];
   onDownloadResumeCLick: ()=>void;
 }
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
   return (
     <>
-      <nav className="fixed top-0 inset-x-0 p-5">
+      <nav className="sticky top-0 inset-x-0 p-5">
 
       </nav>
       <div>
         <main>
-
+          {props.children}
         </main>
         <footer>
 
@@ -31,10 +29,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
         <div className="min-h-[50px] w-[2px] bg-white mt-2 mx-auto"/>
         {props.socials.map((social)=>(
           <Link href={social.fields.url} key={social.sys.id} target='_blank'>
-            <>
-            {console.log(social.fields.icon)}
             <Icon name={social.fields.icon ?? ''} family='brands' className='transition-all scale-100 hover:scale-125'/>
-            </>
           </Link>
         ))}
         <div className="min-h-[50px] w-[2px] bg-white mt-2 mx-auto"/>

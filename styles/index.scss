@@ -15,3 +15,7 @@
   transform-origin:bottom left;
   transform: rotate(-90deg) translateY(100%);
 }
+
+html {
+  scroll-behavior: smooth;
+}

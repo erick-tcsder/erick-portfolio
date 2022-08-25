@@ -11,11 +11,16 @@ import {
   TypeHeroSectionFields,
   TypeInfoSection,
   TypeInfoSectionFields,
+  TypeSocial,
+  TypeSocialFields,
   TypeTechnology,
   TypeTechnologyFields,
 } from "../../types";
+import { TypeMenuItem, TypeMenuItemFields } from "../../types/TypeMenuItem";
 
 export type PageContent = {
+  menuItems: TypeMenuItem[]
+  socials: TypeSocial[];
   heroSection: TypeHeroSection;
   infoSection: TypeInfoSection;
   technologies: TypeTechnology[];
@@ -38,6 +43,14 @@ const handler: NextApiHandler<PageContent | { error: string }> = async (
   if (!locale) res.status(400).json({ error: "Missing locale" });
   else {
     try {
+      const menuItems = (await contentfulClient.getEntries<TypeMenuItemFields>({
+        content_type: "menuItem",
+        locale,
+      })).items
+      const socials = (await contentfulClient.getEntries<TypeSocialFields>({
+        "content_type": "social",
+        locale,
+      })).items
       const heroSection =
         await contentfulClient.getEntry<TypeHeroSectionFields>(
           "3cXXYKLMuRHGgr8DFygSIK",
@@ -79,6 +92,8 @@ const handler: NextApiHandler<PageContent | { error: string }> = async (
         );
 
       res.status(200).json({
+        menuItems,
+        socials,
         heroSection,
         infoSection,
         technologies,

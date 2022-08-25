@@ -1,20 +1,28 @@
-import { createClient } from 'contentful'
+import { Asset, createClient } from 'contentful'
 import type { GetServerSideProps, NextPage } from 'next'
 import { useEffect } from 'react'
 import { MainLayout } from '../../components/layouts/MainLayout'
-import { TypeHeroSection, TypeHeroSectionFields, TypeSocial, TypeSocialFields } from '../../types'
 import Swal from 'sweetalert2'
 import Router from 'next/router'
+import { usePageContent } from '../../hooks/usePageContent'
+import Image from 'next/image'
+import { LoadingLayout } from '../../components/layouts/LoadingLayout'
 
 
 interface LocaleHomeProps {
   locale?: string,
-  socials?: TypeSocial[]
-  hero?: TypeHeroSection
+  loaderImage?: Asset
 }
 
 const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
+  const {
+    content,
+    loading,
+    mutate
+  } = usePageContent({locale:props.locale ?? 'en-US'})
+
   useEffect(()=>{
+    console.log(props)
     if(!props.locale) {
       Swal.fire({
         title: "Error",
@@ -23,18 +31,27 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       })
       Router.push('/en-US')
     }
-    console.log(props.socials)
-    console.log(props.hero?.fields.resume)
-  },[])
+  },[props])
 
-  return (
-    <MainLayout 
-      socials={props.socials ?? []}
-      mail={props.hero?.fields.myMail ?? ''}
-      menuItems={[]}
-      onDownloadResumeCLick={()=>{}}
+  useEffect(()=>{
+    console.log(content)
+  },[content])
+
+  return loading ? (
+    <LoadingLayout
+      loaderImage={props.loaderImage as Asset}
+      loadingText={'Loading ...'}
+    />
+  ) : (
+    <MainLayout
+      mail={content?.heroSection.fields.myMail ?? ''}
+      menuItems={content?.menuItems ?? []}
+      onDownloadResumeCLick={()=>{
+        Router.push('http:'+content?.heroSection.fields.resume.fields.file.url)
+      }}
+      socials={content?.socials ?? []}
     >
-      testing
+      hi
     </MainLayout>
   )
 }
@@ -49,16 +66,11 @@ export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (ct
     const locales = await client.getLocales()
     const currentLocale = locales.items.find((locale)=>locale.code === ctx?.params?.locale)
     if(currentLocale){
-      const socials = (await client.getEntries<TypeSocialFields>({
-        "content_type": "social",
-        locale: currentLocale.code
-      })).items
-      const hero = (await client.getEntry<TypeHeroSectionFields>('3cXXYKLMuRHGgr8DFygSIK'))
+      const animationLink = (await client.getAsset('4YKQQ2eKs7LprySGMJJvKw'))
       return {
         props: {
           locale: currentLocale?.code,
-          socials: socials,
-          hero,
+          loaderImage: animationLink
         }
       }
     }else{
