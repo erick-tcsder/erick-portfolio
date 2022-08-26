@@ -16,7 +16,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
     index: -1
   })
   const jobRef = useRef<HTMLSpanElement>(null)
-  useMemo(()=>{
+  useEffect(()=>{
     const interval = setInterval(()=>{
       actualJob.current = {
         act: props.section.fields.workTypes[(actualJob.current.index+1 + props.section.fields.workTypes.length)%props.section.fields.workTypes.length],
