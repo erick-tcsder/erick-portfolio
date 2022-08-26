@@ -11,7 +11,7 @@ export interface RichTextRendererProps {
 const options : Options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node,children)=><p className='my-3'>{children}</p>,
-    [INLINES.HYPERLINK]: (node,children)=><Link href={node.data.uri} className='text-pink font-bold'>{children}</Link>,
+    [INLINES.HYPERLINK]: (node,children)=><Link href={node.data.uri} className='text-pink no-underline visited:text-fuscia hover:underline underline-offset-2 decoration-2 font-bold'>{children}</Link>,
   },
   renderMark: {
     [MARKS.BOLD]: (text)=><b className='font-bold'>{text}</b>,

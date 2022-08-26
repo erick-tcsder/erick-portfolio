@@ -8,9 +8,8 @@ import { usePageContent } from '../../hooks/usePageContent'
 import { LoadingLayout } from '../../components/layouts/LoadingLayout'
 import {saveAs} from 'file-saver'
 import HeroSection from '../../components/organisms/HeroSection'
-import { TypeHeroSection } from '../../types'
-import { RichTextRenderer } from '../../components/molecules/RichTextRenderer'
-import { Document } from '@contentful/rich-text-types'
+import { TypeHeroSection, TypeInfoSection } from '../../types'
+import { InfoSection } from '../../components/organisms/InfoSection'
 
 interface LocaleHomeProps {
   locale?: string,
@@ -56,6 +55,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       locale={props.locale ?? 'en-US'}
     >
       <HeroSection section={content?.heroSection as TypeHeroSection}/>
+      <InfoSection section={content?.infoSection as TypeInfoSection}/>
     </MainLayout>
   )
 }

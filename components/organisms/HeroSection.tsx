@@ -30,7 +30,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
   },[props.section.fields.workTypes])
 
   return (
-    <div className='min-h-[100vh] flex flex-col'>
+    <div id='home' className='min-h-[100vh] flex flex-col'>
       <div className='my-auto grid grid-cols-1 lg:grid-cols-5'>
         <div className='col-span-3'>
           <span className='text-2xl font-mono block'>{props.section.fields.intro}</span>

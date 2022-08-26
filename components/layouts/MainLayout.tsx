@@ -25,7 +25,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
         />
       </nav>
       <div>
-        <main className="px-12 md:px-24 max-w-7xl mx-auto">
+        <main className="px-12 md:px-24 max-w-[1366px] mx-auto">
           {props.children}
         </main>
         <footer className="bg-dark h-[300px]">
