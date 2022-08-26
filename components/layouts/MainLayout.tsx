@@ -10,16 +10,18 @@ export interface MainLayoutProps {
   children: React.ReactNode;
   menuItems: TypeMenuItem[];
   onDownloadResumeCLick: ()=>void;
+  locale: string;
 }
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
   return (
     <>
-      <nav className="fixed top-0 inset-x-0 p-5 bg-light">
+      <nav className="fixed top-0 inset-x-0 p-5 bg-light z-50">
         <Navbar
           currentSection="01 Home"
           menuItems={props.menuItems}
           onDownloadResumeCLick={props.onDownloadResumeCLick}
+          locale={props.locale}
         />
       </nav>
       <div>

@@ -35,8 +35,8 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
         <div className='col-span-3'>
           <span className='text-2xl font-mono block'>{props.section.fields.intro}</span>
           <div className='text-7xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-block my-5'>{props.section.fields.name}</div>
-          <span className='block text-3xl font-mono mt-3'>
-            I work as
+          <span className='block text-3xl font-mono'>
+            {props.section.fields.iworkPrefix ?? 'I work as'}
             <span ref={jobRef} className='ml-4 font-bold'/>
           </span>
           <div className='leading-loose mt-5'>
@@ -48,8 +48,9 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
             src={'https:'+props.section.fields.avatar.fields.file.url}
             alt="avatar"
             width={props.section.fields.avatar.fields.file.details.image?.width ?? 350}
+            objectFit={'fill'}
             height={props.section.fields.avatar.fields.file.details.image?.height ?? 350}
-            className=''
+            className='z-10'
           />
         </div>
       </div>

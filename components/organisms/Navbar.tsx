@@ -7,6 +7,7 @@ export interface NavbarProps {
   menuItems: TypeMenuItem[];
   currentSection: string;
   onDownloadResumeCLick: ()=>void;
+  locale: string;
 }
 
 export const Navbar : React.FC<NavbarProps> = (props)=>{
@@ -36,7 +37,7 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
           icon='fa-regular fa-file-lines'
           className='p-1 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
           iconPosition='right'
-        >Resume</Button>
+        >{props.locale === 'es-ES' ? 'Curriculum' : 'Resume'}</Button>
       </div>
     </div>
   )

@@ -53,6 +53,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
         saveFile('http:'+content?.heroSection.fields.resume.fields.file.url,props.locale ?? 'en-US')
       }}
       socials={content?.socials ?? []}
+      locale={props.locale ?? 'en-US'}
     >
       <HeroSection section={content?.heroSection as TypeHeroSection}/>
     </MainLayout>
@@ -60,16 +61,16 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (ctx)=>{
+  let animationLink = null
   try{
     const client = createClient({
       space: process.env.CONTENTFUL_SPACE_ID as string,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
     })
-  
+    animationLink = (await client.getAsset('4YKQQ2eKs7LprySGMJJvKw'))
     const locales = await client.getLocales()
     const currentLocale = locales.items.find((locale)=>locale.code === ctx?.params?.locale)
     if(currentLocale){
-      const animationLink = (await client.getAsset('4YKQQ2eKs7LprySGMJJvKw'))
       return {
         props: {
           locale: currentLocale?.code,
@@ -82,7 +83,9 @@ export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (ct
   }catch(e){
     console.error('error')
     return {
-      props: {}
+      props: {
+        loaderImage: animationLink as Asset,
+      }
     }
   }
 }
