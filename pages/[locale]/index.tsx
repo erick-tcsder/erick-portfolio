@@ -5,13 +5,20 @@ import { MainLayout } from '../../components/layouts/MainLayout'
 import Swal from 'sweetalert2'
 import Router from 'next/router'
 import { usePageContent } from '../../hooks/usePageContent'
-import Image from 'next/image'
 import { LoadingLayout } from '../../components/layouts/LoadingLayout'
-
+import {saveAs} from 'file-saver'
+import HeroSection from '../../components/organisms/HeroSection'
+import { TypeHeroSection } from '../../types'
+import { RichTextRenderer } from '../../components/molecules/RichTextRenderer'
+import { Document } from '@contentful/rich-text-types'
 
 interface LocaleHomeProps {
   locale?: string,
   loaderImage?: Asset
+}
+
+const saveFile = (url:string,locale:string)=>{
+  saveAs(url, `Resume_${locale}.pdf`)
 }
 
 const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
@@ -33,10 +40,6 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
     }
   },[props])
 
-  useEffect(()=>{
-    console.log(content)
-  },[content])
-
   return loading ? (
     <LoadingLayout
       loaderImage={props.loaderImage as Asset}
@@ -47,11 +50,11 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       mail={content?.heroSection.fields.myMail ?? ''}
       menuItems={content?.menuItems ?? []}
       onDownloadResumeCLick={()=>{
-        Router.push('http:'+content?.heroSection.fields.resume.fields.file.url)
+        saveFile('http:'+content?.heroSection.fields.resume.fields.file.url,props.locale ?? 'en-US')
       }}
       socials={content?.socials ?? []}
     >
-      hi
+      <HeroSection section={content?.heroSection as TypeHeroSection}/>
     </MainLayout>
   )
 }

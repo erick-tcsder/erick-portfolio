@@ -2,6 +2,7 @@ import { TypeMenuItem } from "../../types/TypeMenuItem";
 import { TypeSocial } from "../../types/TypeSocial";
 import { Icon } from "../atoms/Icon";
 import Link from "../atoms/Link";
+import { Navbar } from "../organisms/Navbar";
 
 export interface MainLayoutProps {
   mail: string;
@@ -14,14 +15,18 @@ export interface MainLayoutProps {
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
   return (
     <>
-      <nav className="sticky top-0 inset-x-0 p-5">
-
+      <nav className="fixed top-0 inset-x-0 p-5 bg-light">
+        <Navbar
+          currentSection="01 Home"
+          menuItems={props.menuItems}
+          onDownloadResumeCLick={props.onDownloadResumeCLick}
+        />
       </nav>
       <div>
-        <main>
+        <main className="px-12 md:px-24 max-w-7xl mx-auto">
           {props.children}
         </main>
-        <footer>
+        <footer className="bg-dark h-[300px]">
 
         </footer>
       </div>
@@ -34,12 +39,11 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
         ))}
         <div className="min-h-[50px] w-[2px] bg-white mt-2 mx-auto"/>
       </div>
-      <div className="fixed mr-10 right-0 bottom-0 hidden md:flex mix-blend-difference text-white font-mono text-xl rotated-bottom-right md:flex-row md:items-center">
+      <div className="fixed mr-10 right-0 bottom-0 hidden md:flex mix-blend-difference text-white font-mono text-md rotated-bottom-right md:flex-row md:items-center">
         <div className="min-w-[50px] min-h-[2px] mr-3 bg-white mt-2" />
         <Link href={`mailto:${props.mail}?subject=Say%20Hello`} className='transition-all scale-100 hover:scale-105'>
           {props.mail}
         </Link>
-        <div className="min-w-[100px] min-h-[2px] ml-3 bg-white mt-2"/>
       </div>
     </>
   )
