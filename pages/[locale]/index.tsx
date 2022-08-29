@@ -8,12 +8,12 @@ import { usePageContent } from "../../hooks/usePageContent";
 import { LoadingLayout } from "../../components/layouts/LoadingLayout";
 import { saveAs } from "file-saver";
 import HeroSection from "../../components/organisms/HeroSection";
-import { TypeDeveloperExperience, TypeHeroSection, TypeInfoSection, TypeTechnology } from "../../types";
+import { TypeContactSection, TypeDeveloperExperience, TypeHeroSection, TypeInfoSection, TypeTechnology } from "../../types";
 import { InfoSection } from "../../components/organisms/InfoSection";
 import { TechsSection } from "../../components/organisms/TechsSection";
-import { RatingStars } from "../../components/molecules/RatingStars";
 import { DevExpSection } from "../../components/organisms/DevExpSection";
 import { DesignerSection } from "../../components/organisms/DesignerSection";
+import { ContactSection } from "../../components/organisms/ContactSection";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -90,6 +90,14 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
             : "Find More Projects in my Behance Profile"
         }
         behanceButtonLink={content?.socials.find(s=>s.fields.name.toLowerCase() === 'behance')?.fields.url ?? '#'}
+      />
+      <ContactSection
+        section={content?.contactSection as TypeContactSection}
+        title={
+          props.locale === "es-ES"
+            ? "Trabajemos Juntos!"
+            : "Let's Work Together!"
+        }
       />
     </MainLayout>
   );

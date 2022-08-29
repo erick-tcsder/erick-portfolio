@@ -17,7 +17,7 @@ export const GradientButton : React.FC<GradientButtonProps> = (props)=>{
     >
       <div className='py-1.5 rounded-md overflow-hidden'>
         <span className='bg-light px-3 py-1.5'>
-          <span className='bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia group-hover:from-sky-500 group-hover:to-blue inline-block font-bold'>
+          <span className='bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia group-hover:from-sky-500 group-hover:to-blue inline-block font-semibold'>
             {title}
           </span>
         </span>
