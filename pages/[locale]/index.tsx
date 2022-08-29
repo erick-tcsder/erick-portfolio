@@ -13,6 +13,7 @@ import { InfoSection } from "../../components/organisms/InfoSection";
 import { TechsSection } from "../../components/organisms/TechsSection";
 import { RatingStars } from "../../components/molecules/RatingStars";
 import { DevExpSection } from "../../components/organisms/DevExpSection";
+import { DesignerSection } from "../../components/organisms/DesignerSection";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -74,6 +75,14 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
           props.locale === "es-ES"
             ? "Dónde he trabajado"
             : "Where I've worked"
+        }
+      />
+      <DesignerSection
+        experience={content?.designerExperience as TypeDeveloperExperience[]}
+        title={
+          props.locale === "es-ES"
+            ? "Diseñador Gráfico"
+            : "Graphic Designer Works"
         }
       />
     </MainLayout>
