@@ -1,11 +1,14 @@
 import Router from 'next/router'
 import React from 'react'
 import { TypeDesignerExperience } from '../../types'
+import { GradientButton } from '../atoms/GradientButton'
 import { ImageWithFrame } from '../molecules/ImageWithFrame'
 
 export interface DesignerSectionProps {
   experience: TypeDesignerExperience[],
   title: string,
+  behanceButtonText: string,
+  behanceButtonLink: string,
 }
 
 export const DesignerSection : React.FC<DesignerSectionProps> = (props) => {
@@ -22,6 +25,13 @@ export const DesignerSection : React.FC<DesignerSectionProps> = (props) => {
           </div>
         ))}
       </div>
+      <GradientButton
+        title={props.behanceButtonText}
+        iconFamily='brands'
+        iconName='behance'
+        className='mt-24 text-2xl font-mono'
+        onClick={()=>{window.open(props.behanceButtonLink,'_blank')}}
+      />
     </div>
   )
 }

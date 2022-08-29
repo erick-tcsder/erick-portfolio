@@ -3,6 +3,7 @@ import { TypeHeroSection } from '../../types'
 import Image from 'next/image'
 import { RichTextRenderer } from '../molecules/RichTextRenderer'
 import { Document } from '@contentful/rich-text-types'
+import { GradientButton } from '../atoms/GradientButton'
 
 
 export interface HeroSectionProps {
