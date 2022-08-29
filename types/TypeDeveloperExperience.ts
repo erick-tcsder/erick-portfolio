@@ -10,7 +10,7 @@ export interface TypeDeveloperExperienceFields {
     startDate: Contentful.EntryFields.Date;
     endDate?: Contentful.EntryFields.Date;
     labels?: Contentful.Entry<TypeWorkLabelFields>[];
-    description?: CFRichTextTypes.Block | CFRichTextTypes.Inline;
+    description?: CFRichTextTypes.Document;
     skills?: Contentful.EntryFields.Symbol[];
     gallery?: Contentful.Asset[];
     rating?: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;

@@ -8,9 +8,11 @@ import { usePageContent } from "../../hooks/usePageContent";
 import { LoadingLayout } from "../../components/layouts/LoadingLayout";
 import { saveAs } from "file-saver";
 import HeroSection from "../../components/organisms/HeroSection";
-import { TypeHeroSection, TypeInfoSection, TypeTechnology } from "../../types";
+import { TypeDeveloperExperience, TypeHeroSection, TypeInfoSection, TypeTechnology } from "../../types";
 import { InfoSection } from "../../components/organisms/InfoSection";
 import { TechsSection } from "../../components/organisms/TechsSection";
+import { RatingStars } from "../../components/molecules/RatingStars";
+import { DevExpSection } from "../../components/organisms/DevExpSection";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -64,6 +66,14 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
           props.locale === "es-ES"
             ? "Softwares & Tecnologias"
             : "Softwares & Technologies"
+        }
+      />
+      <DevExpSection
+        exps={content?.developerExperience as TypeDeveloperExperience[]}
+        title={
+          props.locale === "es-ES"
+            ? "Dónde he trabajado"
+            : "Where I've worked"
         }
       />
     </MainLayout>

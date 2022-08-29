@@ -76,7 +76,7 @@ const handler: NextApiHandler<PageContent | { error: string }> = async (
           content_type: "developerExperience",
           locale,
         })
-      ).items;
+      ).items.sort((a, b) => (b.fields.rating??0) - (a.fields.rating??0));
       const designerExperience = (
         await contentfulClient.getEntries<TypeDesignerExperienceFields>({
           content_type: "designerExperience",

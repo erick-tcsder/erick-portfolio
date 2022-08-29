@@ -17,6 +17,7 @@ specifiers:
   cf-content-types-generator: ^2.2.2
   classnames: ^2.3.1
   contentful: ^9.1.34
+  dayjs: ^1.11.5
   eslint: 8.22.0
   eslint-config-next: 12.2.5
   file-saver: ^2.0.5
@@ -36,6 +37,7 @@ dependencies:
   axios: 0.27.2
   classnames: 2.3.1
   contentful: 9.1.34
+  dayjs: 1.11.5
   file-saver: 2.0.5
   next: 12.2.5_nda4jw7isryfwbpajazmfclzsm
   react: 18.2.0
@@ -2098,6 +2100,10 @@ packages:
     resolution: {integrity: sha512-0VNbwmWJDS/G3ySwFSJA3ayhbURMTJLtwM2DTxf9CWondCnh6DTNlO9JgRSq6ibf4eD0lfMJNBxUdEAHHix+bA==}
     engines: {node: '>=0.11'}
     dev: true
+
+  /dayjs/1.11.5:
+    resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
