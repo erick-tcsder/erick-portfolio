@@ -15,6 +15,7 @@ import { DevExpSection } from "../../components/organisms/DevExpSection";
 import { DesignerSection } from "../../components/organisms/DesignerSection";
 import { ContactSection } from "../../components/organisms/ContactSection";
 import { useHeaderContext } from "../../hooks/useHeaderContext";
+import _ from "lodash";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -33,9 +34,9 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
   const {
     currentHeader
   } = useHeaderContext()
-  useEffect(()=>{
-    window.history.replaceState(null,'',currentHeader.link)
-  },[currentHeader.link])
+  useEffect(_.debounce(()=>{
+      window.history.replaceState(null,'',currentHeader.link)
+  },500),[currentHeader])
 
   useEffect(() => {
     if (!props.locale) {
