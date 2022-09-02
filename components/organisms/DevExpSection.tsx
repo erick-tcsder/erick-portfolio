@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
-import React from 'react'
+import React, { useRef } from 'react'
+import { useHeaderContext } from '../../hooks/useHeaderContext';
+import { useTopSection } from '../../hooks/useTopSection';
 import { TypeDeveloperExperience } from '../../types'
 import { Icon } from '../atoms/Icon';
 import { ImageWithFrame } from '../molecules/ImageWithFrame';
@@ -13,9 +15,19 @@ export interface DevExpSectionProps {
 }
 
 export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
-  console.log(props);
+  const topSectionRef = useRef<HTMLDivElement>(null)
+  const {handleChangeHeader} = useHeaderContext()
+  useTopSection(topSectionRef, {
+    top: [-100,100],
+    onTop: ()=>{
+      handleChangeHeader({
+        link: '#experience',
+        title: '03 Experience'
+      })
+    }
+  })
   return (
-    <div id='experience' className="py-[60px] md:py-[80px] lg:py-[100px]">
+    <div id='experience' ref={topSectionRef} className="py-[60px] md:py-[80px] lg:py-[100px]">
       <div className='flex flex-row justify-center'>
         <span className="text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
           {props.title}

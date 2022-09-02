@@ -7,22 +7,19 @@ import Head from 'next/head';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+          <title>{"Hello I'm Erick"}</title>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
       <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALITICS_KEY}`} />
       <Script strategy="lazyOnload" id='google-analitics'>
           {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALITICS_KEY}', {
-              page_path: window.location.pathname,
-              });
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALITICS_KEY}')
           `}
       </Script>
-
-      <Head>
-          <title>{"Hello I'm Erick"}</title>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
 
       <HeaderContextProvider>
         <Component {...pageProps} />

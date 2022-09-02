@@ -6,14 +6,29 @@ import { Document } from '@contentful/rich-text-types'
 import { GradientButton } from '../atoms/GradientButton'
 import Router from 'next/router'
 import { Button } from '../atoms/Button'
+import { useHeaderContext } from '../../hooks/useHeaderContext'
+import { useTopSection } from '../../hooks/useTopSection'
 
 
 export interface HeroSectionProps {
-  section: TypeHeroSection
+  section: TypeHeroSection,
+  handleDownloadResume: ()=>void
 }
 
 
 const HeroSection : React.FC<HeroSectionProps> = (props) => {
+  const topSectionRef = useRef<HTMLDivElement>(null)
+  const {handleChangeHeader} = useHeaderContext()
+  useTopSection(topSectionRef, {
+    top: [-100,100],
+    onTop: ()=>{
+      handleChangeHeader({
+        link: '#home',
+        title: '01 Home'
+      })
+    }
+  })
+
   const actualJob = useRef<{act:string,index:number}>({
     act: "Frontend Developer",
     index: -1
@@ -33,7 +48,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
   },[props.section.fields.workTypes])
 
   return (
-    <div id='home' className='min-h-[100vh] flex flex-col'>
+    <div id='home' ref={topSectionRef} className='min-h-[100vh] flex flex-col'>
       <div className='my-auto grid grid-cols-1 lg:grid-cols-5'>
         <div className='col-span-3'>
           <span className='text-2xl font-mono block'>{props.section.fields.intro}</span>
@@ -49,6 +64,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
             <Button
               className='bg-gradient-to-tl from-blue to-fuscia hover:from-sky-500 hover:to-blue transition-all
               p-1 px-4 text-white font-semibold rounded-md text-lg'
+              onClick={props.handleDownloadResume}
             >
               Download Resume/CV
             </Button>

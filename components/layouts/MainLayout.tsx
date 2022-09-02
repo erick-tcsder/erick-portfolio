@@ -5,6 +5,7 @@ import { Icon } from "../atoms/Icon";
 import Link from "../atoms/Link";
 import { Navbar } from "../organisms/Navbar";
 import Image from "next/image";
+import { useHeaderContext } from "../../hooks/useHeaderContext";
 
 export interface MainLayoutProps {
   mail: string;
@@ -17,11 +18,12 @@ export interface MainLayoutProps {
 }
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
+  const {currentHeader} = useHeaderContext()
   return (
     <>
       <nav className="fixed top-0 inset-x-0 p-5 bg-light z-50">
         <Navbar
-          currentSection="01 Home"
+          currentSection={currentHeader.title}
           menuItems={props.menuItems}
           onDownloadResumeCLick={props.onDownloadResumeCLick}
           locale={props.locale}
