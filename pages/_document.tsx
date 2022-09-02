@@ -20,7 +20,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <title>Erick Fonseca</title>
         <body
           className="bg-light"
         >

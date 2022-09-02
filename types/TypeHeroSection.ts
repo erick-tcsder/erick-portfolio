@@ -4,8 +4,9 @@ import * as Contentful from "contentful";
 export interface TypeHeroSectionFields {
     name: Contentful.EntryFields.Symbol;
     intro?: Contentful.EntryFields.Symbol;
+    iworkPrefix?: Contentful.EntryFields.Symbol;
     workTypes: Contentful.EntryFields.Symbol[];
-    description: CFRichTextTypes.Block | CFRichTextTypes.Inline;
+    description: CFRichTextTypes.Block;
     myMail: Contentful.EntryFields.Symbol;
     resume: Contentful.Asset;
     avatar: Contentful.Asset;

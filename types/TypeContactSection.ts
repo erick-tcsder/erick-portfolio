@@ -2,7 +2,7 @@ import * as CFRichTextTypes from "@contentful/rich-text-types";
 import * as Contentful from "contentful";
 
 export interface TypeContactSectionFields {
-    currentStatus: CFRichTextTypes.Block | CFRichTextTypes.Inline;
+    currentStatus: CFRichTextTypes.Document;
     myEmail: Contentful.EntryFields.Symbol;
 }
 
