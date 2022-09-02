@@ -58,6 +58,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       }}
       socials={content?.socials ?? []}
       locale={props.locale ?? "en-US"}
+      avatar={content?.heroSection.fields.avatar as Asset}
     >
       <HeroSection section={content?.heroSection as TypeHeroSection} />
       <InfoSection section={content?.infoSection as TypeInfoSection} />

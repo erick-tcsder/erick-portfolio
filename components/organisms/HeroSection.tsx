@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { RichTextRenderer } from '../molecules/RichTextRenderer'
 import { Document } from '@contentful/rich-text-types'
 import { GradientButton } from '../atoms/GradientButton'
+import Router from 'next/router'
+import { Button } from '../atoms/Button'
 
 
 export interface HeroSectionProps {
@@ -43,16 +45,33 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
           <div className='leading-loose mt-5'>
             <RichTextRenderer content={props.section.fields.description as Document}/>
           </div>
+          <div className='flex flex-row gap-5 mt-16'>
+            <Button
+              className='bg-gradient-to-tl from-blue to-fuscia hover:from-sky-500 hover:to-blue transition-all
+              p-1 px-4 text-white font-semibold rounded-md text-lg'
+            >
+              Download Resume/CV
+            </Button>
+            <GradientButton
+              title='Send me an Email'
+              iconName='paper-plane'
+              iconFamily='solid'
+              className='text-xl'
+              onClick={()=>{Router.push(`mailto:${props.section.fields.myMail}?subject=Say%20Hello`)}}
+            />
+          </div>
         </div>
         <div className='col-span-2 flex flex-row justify-center'>
-          <Image
-            src={'https:'+props.section.fields.avatar.fields.file.url}
-            alt="avatar"
-            width={props.section.fields.avatar.fields.file.details.image?.width ?? 350}
-            objectFit={'fill'}
-            height={props.section.fields.avatar.fields.file.details.image?.height ?? 350}
-            className='z-10'
-          />
+          <div className='self-center'>
+            <Image
+              src={'https:'+props.section.fields.avatar.fields.file.url}
+              alt="avatar"
+              width={props.section.fields.avatar.fields.file.details.image?.width ?? 350}
+              objectFit={'fill'}
+              height={props.section.fields.avatar.fields.file.details.image?.height ?? 350}
+              className='z-10 self-center'
+            />
+          </div>
         </div>
       </div>
     </div>
