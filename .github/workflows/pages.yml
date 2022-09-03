@@ -54,8 +54,6 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.2
-        with:
-        run_install: # optional, default is null
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
