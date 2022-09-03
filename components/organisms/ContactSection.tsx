@@ -25,10 +25,10 @@ export const ContactSection : React.FC<ContactSectionProps> = (props) => {
   })
   return (
     <div id='contact' ref={topSectionRef} className="py-[60px] md:py-[80px] lg:py-[100px] flex flex-col justify-center items-center">
-      <div className="text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
+      <div className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
         {props.title}
       </div>
-      <div className='text-2xl text-center'>
+      <div className='text-base md:text-2xl text-center'>
         <RichTextRenderer
           content={props.section.fields.currentStatus}
         />
@@ -37,7 +37,7 @@ export const ContactSection : React.FC<ContactSectionProps> = (props) => {
         title='Send me an Email'
         iconName='paper-plane'
         iconFamily='solid'
-        className='text-2xl my-16'
+        className='text-base md:text-2xl my-3 md:my-16'
         onClick={()=>{Router.push(`mailto:${props.section.fields.myEmail}?subject=Say%20Hello`)}}
       />
     </div>

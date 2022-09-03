@@ -19,11 +19,11 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
   },[props.menuItems])
   return (
     <div className="w-full flex flex-row justify-between items-start">
-      <div className="font-bold font-mono text-3xl md:text-4xl lg:text-5xl flex gap-4 text-dark">
-        <span className="min-w-[5px] min-h-full bg-dark"/>
+      <div className="font-bold font-mono text-2xl md:text-4xl lg:text-5xl flex gap-4 text-dark">
+        <span className="min-w-[3px] md:min-w-[5px] min-h-full bg-dark"/>
         <span>{props.currentSection}</span>
       </div>
-      <div className="flex flex-row gap-7 items-center">
+      <div className="flex flex-row gap-7 items-center justify-end">
         <div className="hidden lg:flex gap-5 font-mono text-lg">
           {itemsSorted.map((item)=>(
             <Link key={item.sys.id} href={item.fields.link} className='font-normal hover:font-bold no-underline hover:underline hover:underline-offset-4 hover:decoration-pink hover:decoration-2'>
@@ -32,12 +32,19 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
             </Link>
           ))}
         </div>
-        <Button
-          onClick={props.onDownloadResumeCLick}
-          icon='fa-regular fa-file-lines'
-          className='p-1 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
-          iconPosition='right'
-        >{props.locale === 'es-ES' ? 'Curriculum' : 'Resume'}</Button>
+        <div className="flex flex-row gap-x-2">
+          <Button
+            onClick={props.onDownloadResumeCLick}
+            icon='fa-regular fa-file-lines'
+            className='p-1 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
+            iconPosition='right'
+          >{props.locale === 'es-ES' ? 'Curriculum' : 'Resume'}</Button>
+          <Button
+            onClick={()=>{}}
+            icon='fa-solid fa-bars'
+            className='p-2 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
+          />
+        </div>
       </div>
     </div>
   )

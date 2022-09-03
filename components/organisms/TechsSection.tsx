@@ -11,10 +11,10 @@ export interface TechsSectionProps {
 export const TechsSection: React.FC<TechsSectionProps> = (props) => {
   return (
     <div className="py-[30px] md:py-[50px] lg:py-[60px] flex flex-col justify-center items-center">
-      <div className="text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
+      <div className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
         {props.title}
       </div>
-      <div className="flex flex-row mx-0 md:mx-16 lg:mx-24 w-auto gap-y-5 gap-x-14 flex-wrap justify-center mt-10">
+      <div className="flex flex-row mx-0 md:mx-16 lg:mx-24 w-auto gap-y-5 gap-x-14 flex-wrap justify-center mt-3 md:mt-10">
         {props.technologies.map((t) => (
           <Link
             href={t.fields.url ?? "#"}
@@ -30,7 +30,7 @@ export const TechsSection: React.FC<TechsSectionProps> = (props) => {
               height={t.fields.img.fields.file.details.image?.height}
               width={t.fields.img.fields.file.details.image?.width}
               alt={t.fields.name}
-              className="saturate-0 hover:saturate-100 transition-all"
+              className="saturate-50 lg:saturate-0 hover:saturate-100 transition-all"
             />
           </Link>
         ))}

@@ -102,8 +102,8 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
         }
         behanceButtonText={
           props.locale === "es-ES"
-            ? "Visita mi Perfil de Behance para mas información"
-            : "Find More Projects in my Behance Profile"
+            ? "Perfil de Behance"
+            : "Behance Profile"
         }
         behanceButtonLink={content?.socials.find(s=>s.fields.name.toLowerCase() === 'behance')?.fields.url ?? '#'}
       />

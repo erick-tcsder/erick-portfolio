@@ -34,8 +34,8 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
           {props.children}
         </main>
         <footer className="bg-dark flex flex-row justify-center text-white">
-          <div className="px-12 md:px-24 max-w-[1366px] mx-auto py-9 w-full flex flex-row justify-around">
-            <div className="w-[200px] h-[250px]">
+          <div className="px-12 md:px-24 max-w-[1366px] mx-auto py-9 w-full flex flex-col md:flex-row justify-around">
+            <div className="w-[100px] md:w-[200px] h-[150px] md:h-[250px] self-center">
               <Image
                 src={'https:'+props.avatar.fields.file.url}
                 alt="avatar"
@@ -49,7 +49,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
               {props.menuItems.map(item=>(
                 <Link 
                   key={item.sys.id} 
-                  className='hover:underline no-underline underline-offset-4 decoration-2'
+                  className='hover:underline no-underline underline-offset-4 decoration-1 md:decoration-2 text-sm md:text-base'
                   href={item.fields.link}
                 >
                   {item.fields.index + '. ' + item.fields.name}
