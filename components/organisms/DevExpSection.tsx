@@ -16,10 +16,11 @@ export interface DevExpSectionProps {
 
 export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
   const topSectionRef = useRef<HTMLDivElement>(null)
-  const {handleChangeHeader} = useHeaderContext()
+  const {handleChangeHeader,currentHeader} = useHeaderContext()
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
+      if(currentHeader.title === '03 Experience') return
       handleChangeHeader({
         link: '#experience',
         title: '03 Experience'

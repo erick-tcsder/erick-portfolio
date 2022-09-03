@@ -13,10 +13,11 @@ export interface ContactSectionProps {
 
 export const ContactSection : React.FC<ContactSectionProps> = (props) => {
   const topSectionRef = useRef<HTMLDivElement>(null)
-  const {handleChangeHeader} = useHeaderContext()
+  const {handleChangeHeader,currentHeader} = useHeaderContext()
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
+      if(currentHeader.title === '04 Contact') return
       handleChangeHeader({
         link: '#contact',
         title: '04 Contact'
