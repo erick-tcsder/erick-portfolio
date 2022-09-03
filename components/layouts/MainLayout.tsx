@@ -17,6 +17,7 @@ export interface MainLayoutProps {
   onDownloadResumeCLick: ()=>void;
   locale: string;
   avatar: Asset;
+  allLocales: string[];
 }
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
@@ -31,6 +32,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
           onDownloadResumeCLick={props.onDownloadResumeCLick}
           locale={props.locale}
           handleToggleMobile={()=>{setIsOpen((prev)=>!prev)}}
+          allLocales={props.allLocales}
         />
       </nav>
       <MobileNav isOpen={isOpen} menuItems={props.menuItems} socials={props.socials} handleHideMobile={()=>{setIsOpen(false)}}/>

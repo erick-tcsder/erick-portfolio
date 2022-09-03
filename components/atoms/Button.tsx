@@ -42,7 +42,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     >
       {props.children && (
         <span
-          className={classNames('w-full',{
+          className={classNames({
             'order-2': icon,
           })}
         >
@@ -50,11 +50,14 @@ export const Button: React.FC<ButtonProps> = (props) => {
         </span>
       )}
       {props.icon && (
-        <i className={classNames({
-          'hidden': !icon,
-          'order-1 mr-2': !iconPosition && props.children,
-          [`${iconPositions[iconPosition ?? 'left']}`]: iconPosition,
-        },icon)}/>
+        <Icon
+          className={classNames({
+            'hidden': !icon,
+            'order-1 mr-2': !iconPosition && props.children,
+            [`${iconPositions[iconPosition ?? 'left']}`]: iconPosition,
+          })}
+          name={icon ?? ''}
+        />
       )}
     </button>
   );

@@ -1,7 +1,10 @@
+import Router from "next/router";
 import { useMemo } from "react";
+import { localeIcons } from "../../pages/[locale]";
 import { TypeMenuItem } from "../../types/TypeMenuItem";
 import { Button } from "../atoms/Button";
 import Link from "../atoms/Link"
+import LocaleSelect from "../molecules/LocaleSelect";
 
 export interface NavbarProps {
   menuItems: TypeMenuItem[];
@@ -9,6 +12,7 @@ export interface NavbarProps {
   onDownloadResumeCLick: ()=>void;
   locale: string;
   handleToggleMobile: ()=>void;
+  allLocales: string[];
 }
 
 export const Navbar : React.FC<NavbarProps> = (props)=>{
@@ -40,6 +44,10 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
             className='p-1 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
             iconPosition='right'
           >{props.locale === 'es-ES' ? 'Curriculum' : 'Resume'}</Button>
+            <LocaleSelect
+              allLocales={props.allLocales}
+              locale={props.locale}
+            />
           <Button
             onClick={()=>{props.handleToggleMobile()}}
             icon='fa-solid fa-bars'

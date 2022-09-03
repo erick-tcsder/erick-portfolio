@@ -13,14 +13,14 @@ export type TypeHeader = {
 export const HeaderContext = createContext<HeaderContextProps>({
   currentHeader: {
     link: '#',
-    title: 'Home'
+    title: '01 Home'
   },
   handleChangeHeader: (newHeader)=>{return}
 })
 
 export const HeaderContextProvider : React.FC<{children: React.ReactNode}> = (props)=>{
   const [header, setHeader] = useState<TypeHeader>({
-    title: 'Home',
+    title: '01 Home',
     link: '#'
   })
 

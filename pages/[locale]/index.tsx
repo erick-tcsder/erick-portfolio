@@ -20,17 +20,27 @@ import _ from "lodash";
 interface LocaleHomeProps {
   locale?: string;
   loaderImage?: Asset;
+  allLocales?: string[];
 }
 
 const saveFile = (url: string, locale: string) => {
   saveAs(url, `Resume_${locale}.pdf`);
 };
 
+export const localeIcons : Record<string,string> = {
+  'en-US': '🇺🇸',
+  'es-ES': '🇪🇸',
+}
+
 const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const { content, loading, mutate } = usePageContent({
+  const { content, loading, handleChangeLocale } = usePageContent({
     locale: props.locale ?? "en-US",
   });
+
+  useEffect(()=>{
+    handleChangeLocale(props.locale ?? "en-US")
+  },[handleChangeLocale, props.locale])
 
   const {
     currentHeader
@@ -72,6 +82,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       socials={content?.socials ?? []}
       locale={props.locale ?? "en-US"}
       avatar={content?.heroSection.fields.avatar as Asset}
+      allLocales={props.allLocales ?? []}
     >
       <HeroSection section={content?.heroSection as TypeHeroSection}
         handleDownloadResume={() => {
@@ -142,6 +153,7 @@ export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (
       return {
         props: {
           locale: currentLocale?.code,
+          allLocales: locales.items.map((locale) => locale.code),
           loaderImage: animationLink,
         },
       };
