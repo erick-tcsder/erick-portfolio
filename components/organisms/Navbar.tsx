@@ -43,7 +43,7 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
           <Button
             onClick={()=>{props.handleToggleMobile()}}
             icon='fa-solid fa-bars'
-            className='p-2 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
+            className='p-2 px-3 rounded-md border-dark block lg:hidden border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
           />
         </div>
       </div>
