@@ -8,6 +8,7 @@ export interface NavbarProps {
   currentSection: string;
   onDownloadResumeCLick: ()=>void;
   locale: string;
+  handleToggleMobile: ()=>void;
 }
 
 export const Navbar : React.FC<NavbarProps> = (props)=>{
@@ -40,7 +41,7 @@ export const Navbar : React.FC<NavbarProps> = (props)=>{
             iconPosition='right'
           >{props.locale === 'es-ES' ? 'Curriculum' : 'Resume'}</Button>
           <Button
-            onClick={()=>{}}
+            onClick={()=>{props.handleToggleMobile()}}
             icon='fa-solid fa-bars'
             className='p-2 px-3 rounded-md border-dark border-2 font-mono transition-all translate-y-0 hover:-translate-y-1 hover:font-bold'
           />

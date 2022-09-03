@@ -6,6 +6,8 @@ import Link from "../atoms/Link";
 import { Navbar } from "../organisms/Navbar";
 import Image from "next/image";
 import { useHeaderContext } from "../../hooks/useHeaderContext";
+import { useState } from "react";
+import { MobileNav } from "../organisms/MobileNav";
 
 export interface MainLayoutProps {
   mail: string;
@@ -19,6 +21,7 @@ export interface MainLayoutProps {
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
   const {currentHeader} = useHeaderContext()
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <>
       <nav className="fixed top-0 inset-x-0 p-5 bg-light z-50">
@@ -27,8 +30,10 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
           menuItems={props.menuItems}
           onDownloadResumeCLick={props.onDownloadResumeCLick}
           locale={props.locale}
+          handleToggleMobile={()=>{setIsOpen((prev)=>!prev)}}
         />
       </nav>
+      <MobileNav isOpen={isOpen} menuItems={props.menuItems} socials={props.socials} handleHideMobile={()=>{setIsOpen(false)}}/>
       <div>
         <main className="px-12 md:px-24 max-w-[1366px] mx-auto">
           {props.children}

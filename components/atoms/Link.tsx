@@ -16,6 +16,7 @@ export const Link: React.FC<LinkProps> = (props) => {
         className={props.className ?? ''}
         target={props.target}
         style={props.style}
+        onClick={props.onClick}
       >
         {props.children}
       </a>
