@@ -149,7 +149,7 @@ export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (
       throw new Error("Locale not found");
     }
   } catch (e) {
-    console.error("error");
+    console.error("error",e);
     return {
       props: {
         loaderImage: animationLink as Asset,
