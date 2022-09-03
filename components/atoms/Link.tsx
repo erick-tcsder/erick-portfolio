@@ -9,14 +9,15 @@ export interface LinkProps extends NextLinkProps {
 }
 
 export const Link: React.FC<LinkProps> = (props) => {
+  const {onClick,...nextLinkProps} = props
   return (
-    <NextLink {...props} passHref>
+    <NextLink {...nextLinkProps} passHref>
       <a
         href={props.href.toString()}
         className={props.className ?? ''}
         target={props.target}
         style={props.style}
-        onClick={props.onClick}
+        onClick={onClick}
       >
         {props.children}
       </a>

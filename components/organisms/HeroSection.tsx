@@ -18,10 +18,11 @@ export interface HeroSectionProps {
 
 const HeroSection : React.FC<HeroSectionProps> = (props) => {
   const topSectionRef = useRef<HTMLDivElement>(null)
-  const {handleChangeHeader} = useHeaderContext()
+  const {handleChangeHeader,currentHeader} = useHeaderContext()
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
+      if(currentHeader.title === '01 Home') return
       handleChangeHeader({
         link: '#home',
         title: '01 Home'

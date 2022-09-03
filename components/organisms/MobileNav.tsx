@@ -26,7 +26,7 @@ export const MobileNav : React.FC<MobileNavProps> = (props)=>{
               key={item.sys.id} 
               className='hover:underline no-underline underline-offset-4 decoration-1 md:decoration-2 text-lg'
               href={item.fields.link}
-              onClick={()=>{props.handleHideMobile();console.log('asda')}}
+              onClick={()=>{props.handleHideMobile()}}
             >
               {item.fields.index + '. ' + item.fields.name}
             </Link>

@@ -1,6 +1,6 @@
 import { Asset, createClient } from "contentful";
 import type { GetServerSideProps, NextPage } from "next";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MainLayout } from "../../components/layouts/MainLayout";
 import Swal from "sweetalert2";
 import Router from "next/router";
@@ -27,6 +27,7 @@ const saveFile = (url: string, locale: string) => {
 };
 
 const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const { content, loading, mutate } = usePageContent({
     locale: props.locale ?? "en-US",
   });
@@ -34,9 +35,13 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
   const {
     currentHeader
   } = useHeaderContext()
-  useEffect(_.debounce(()=>{
+  useEffect(()=>{
+    if(timeoutRef.current) clearTimeout(timeoutRef.current)
+    const timeout = setTimeout(()=>{
       window.history.replaceState(null,'',currentHeader.link)
-  },500),[currentHeader])
+    },500)
+    timeoutRef.current = timeout
+  },[currentHeader])
 
   useEffect(() => {
     if (!props.locale) {
@@ -144,7 +149,7 @@ export const getServerSideProps: GetServerSideProps<LocaleHomeProps> = async (
       throw new Error("Locale not found");
     }
   } catch (e) {
-    console.error("error");
+    console.error("error",e);
     return {
       props: {
         loaderImage: animationLink as Asset,
