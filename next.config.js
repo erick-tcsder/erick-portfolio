@@ -7,6 +7,7 @@ const nextConfig = {
 module.exports = {
   ...nextConfig,
   images:{
-    domains: ["images.ctfassets.net"]
+    domains: ["images.ctfassets.net"],
+    unoptimized: true
   }
 }
