@@ -5,6 +5,9 @@ import { Icon } from "../atoms/Icon";
 import Link from "../atoms/Link";
 import { Navbar } from "../organisms/Navbar";
 import Image from "next/image";
+import { useHeaderContext } from "../../hooks/useHeaderContext";
+import { useState } from "react";
+import { MobileNav } from "../organisms/MobileNav";
 
 export interface MainLayoutProps {
   mail: string;
@@ -17,23 +20,27 @@ export interface MainLayoutProps {
 }
 
 export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
+  const {currentHeader} = useHeaderContext()
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <>
       <nav className="fixed top-0 inset-x-0 p-5 bg-light z-50">
         <Navbar
-          currentSection="01 Home"
+          currentSection={currentHeader.title}
           menuItems={props.menuItems}
           onDownloadResumeCLick={props.onDownloadResumeCLick}
           locale={props.locale}
+          handleToggleMobile={()=>{setIsOpen((prev)=>!prev)}}
         />
       </nav>
+      <MobileNav isOpen={isOpen} menuItems={props.menuItems} socials={props.socials} handleHideMobile={()=>{setIsOpen(false)}}/>
       <div>
         <main className="px-12 md:px-24 max-w-[1366px] mx-auto">
           {props.children}
         </main>
         <footer className="bg-dark flex flex-row justify-center text-white">
-          <div className="px-12 md:px-24 max-w-[1366px] mx-auto py-9 w-full flex flex-row justify-around">
-            <div className="w-[200px] h-[250px]">
+          <div className="px-12 md:px-24 max-w-[1366px] mx-auto py-9 w-full flex flex-col md:flex-row justify-around">
+            <div className="w-[100px] md:w-[200px] h-[150px] md:h-[250px] self-center">
               <Image
                 src={'https:'+props.avatar.fields.file.url}
                 alt="avatar"
@@ -47,7 +54,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
               {props.menuItems.map(item=>(
                 <Link 
                   key={item.sys.id} 
-                  className='hover:underline no-underline underline-offset-4 decoration-2'
+                  className='hover:underline no-underline underline-offset-4 decoration-1 md:decoration-2 text-sm md:text-base'
                   href={item.fields.link}
                 >
                   {item.fields.index + '. ' + item.fields.name}

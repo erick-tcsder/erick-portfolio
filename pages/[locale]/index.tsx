@@ -14,6 +14,8 @@ import { TechsSection } from "../../components/organisms/TechsSection";
 import { DevExpSection } from "../../components/organisms/DevExpSection";
 import { DesignerSection } from "../../components/organisms/DesignerSection";
 import { ContactSection } from "../../components/organisms/ContactSection";
+import { useHeaderContext } from "../../hooks/useHeaderContext";
+import _ from "lodash";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -29,8 +31,14 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
     locale: props.locale ?? "en-US",
   });
 
+  const {
+    currentHeader
+  } = useHeaderContext()
+  useEffect(_.debounce(()=>{
+      window.history.replaceState(null,'',currentHeader.link)
+  },500),[currentHeader])
+
   useEffect(() => {
-    console.log(props);
     if (!props.locale) {
       Swal.fire({
         title: "Error",
@@ -52,15 +60,22 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       menuItems={content?.menuItems ?? []}
       onDownloadResumeCLick={() => {
         saveFile(
-          "http:" + content?.heroSection.fields.resume.fields.file.url,
-          props.locale ?? "en-US"
+          "https:" + content?.heroSection.fields.resume.fields.file.url,
+          props.locale ?? "en-US",
         );
       }}
       socials={content?.socials ?? []}
       locale={props.locale ?? "en-US"}
       avatar={content?.heroSection.fields.avatar as Asset}
     >
-      <HeroSection section={content?.heroSection as TypeHeroSection} />
+      <HeroSection section={content?.heroSection as TypeHeroSection}
+        handleDownloadResume={() => {
+          saveFile(
+            "https:" + content?.heroSection.fields.resume.fields.file.url,
+            props.locale ?? "en-US",
+          );
+        }}
+      />
       <InfoSection section={content?.infoSection as TypeInfoSection} />
       <TechsSection
         technologies={content?.technologies as TypeTechnology[]}
@@ -87,8 +102,8 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
         }
         behanceButtonText={
           props.locale === "es-ES"
-            ? "Visita mi Perfil de Behance para mas información"
-            : "Find More Projects in my Behance Profile"
+            ? "Perfil de Behance"
+            : "Behance Profile"
         }
         behanceButtonLink={content?.socials.find(s=>s.fields.name.toLowerCase() === 'behance')?.fields.url ?? '#'}
       />
