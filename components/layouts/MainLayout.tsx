@@ -34,7 +34,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
         />
       </nav>
       <MobileNav isOpen={isOpen} menuItems={props.menuItems} socials={props.socials} handleHideMobile={()=>{setIsOpen(false)}}/>
-      <div>
+      <div className="custom-scrollbar">
         <main className="px-12 md:px-24 max-w-[1366px] mx-auto">
           {props.children}
         </main>
