@@ -9,6 +9,7 @@ import { RichTextRenderer } from '../molecules/RichTextRenderer';
 export interface ContactSectionProps {
   section: TypeContactSection;
   title: string;
+  locale: string;
 }
 
 export const ContactSection : React.FC<ContactSectionProps> = (props) => {
@@ -17,10 +18,10 @@ export const ContactSection : React.FC<ContactSectionProps> = (props) => {
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
-      if(currentHeader.title === '04 Contact') return
+      if(currentHeader.title === ('04 '+(props.locale === 'es-ES' ? 'Contacto' : 'Contact'))) return
       handleChangeHeader({
         link: '#contact',
-        title: '04 Contact'
+        title: '04 '+(props.locale === 'es-ES' ? 'Contacto' : 'Contact')
       })
     }
   })

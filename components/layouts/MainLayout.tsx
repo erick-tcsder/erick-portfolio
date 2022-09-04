@@ -25,7 +25,7 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <>
-      <nav className="fixed top-0 inset-x-0 p-5 bg-light z-50">
+      <nav className="fixed top-0 inset-x-0 p-2 md:p-5 bg-light z-50">
         <Navbar
           currentSection={currentHeader.title}
           menuItems={props.menuItems}
@@ -35,7 +35,14 @@ export const MainLayout : React.FC<MainLayoutProps> = (props)=>{
           allLocales={props.allLocales}
         />
       </nav>
-      <MobileNav isOpen={isOpen} menuItems={props.menuItems} socials={props.socials} handleHideMobile={()=>{setIsOpen(false)}}/>
+      <MobileNav 
+        isOpen={isOpen}
+        menuItems={props.menuItems} 
+        socials={props.socials} 
+        handleHideMobile={()=>{setIsOpen(false)}}
+        locale={props.locale}
+        allLocales={props.allLocales}
+      />
       <div className="custom-scrollbar">
         <main className="px-12 md:px-24 max-w-[1366px] mx-auto">
           {props.children}
