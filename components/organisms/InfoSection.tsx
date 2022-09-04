@@ -29,7 +29,7 @@ export const InfoSection : React.FC<InfoSectionProps> = (props) => {
   return (
     <div id='personal-info' ref={topSectionRef} className="py-[60px] md:py-[80px] lg:py-[100px] grid grid-cols-1 lg:grid-cols-5">
       <div className="col-span-1 lg:col-span-3 order-2">
-        <div className='text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-block my-2 mt-8 md:my-5'>{props.locale === 'es-ES' ? 'Información Personal' : 'Personal Information'}</div>
+        <h2 className='text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-block my-2 mt-8 md:my-5'>{props.locale === 'es-ES' ? 'Información Personal' : 'Personal Information'}</h2>
         <span className="block font-mono text-base md:text-xl">
           {props.locale === 'es-ES' ? 'Nombre:' : 'Name:'}
           <span className="font-bold ml-3">{props.section.fields.name}</span>

@@ -30,9 +30,9 @@ export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
   return (
     <div id='experience' ref={topSectionRef} className="py-[60px] md:py-[80px] lg:py-[100px]">
       <div className='flex flex-row justify-center'>
-        <span className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
+        <h2 className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
           {props.title}
-        </span>
+        </h2>
       </div>
       <div className='w-full flex flex-col gap-y-24 mt-3 md:mt-10'>
       {props.exps.map((exp)=>(

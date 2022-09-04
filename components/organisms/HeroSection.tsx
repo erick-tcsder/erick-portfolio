@@ -53,7 +53,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
       <div className='my-auto grid grid-cols-1 lg:grid-cols-5'>
         <div className='col-span-3 order-2 -mt-10 md:mt-0'>
           <span className='text-base md:text-xl lg:text-2xl font-mono block'>{props.section.fields.intro}</span>
-          <div className='text-3xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-block my-2 md:my-5'>{props.section.fields.name}</div>
+          <h1 className='text-3xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-block my-2 md:my-5'>{props.section.fields.name}</h1>
           <span className='block text-base md:text-xl lg:text-3xl font-mono'>
             {props.section.fields.iworkPrefix ?? 'I work as'}
             <span ref={jobRef} className='ml-2 md:ml-4 font-bold'/>

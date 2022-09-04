@@ -14,9 +14,9 @@ export interface DesignerSectionProps {
 export const DesignerSection : React.FC<DesignerSectionProps> = (props) => {
   return (
     <div className="py-[30px] md:py-[50px] lg:py-[60px] flex flex-col justify-center items-center">
-      <div className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
+      <h2 className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
         {props.title}
-      </div>
+      </h2>
       <div className="mt-3 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
         {props.experience.map(exp=>(
           <div key={exp.sys.id} className='relative self-center m-auto cursor-pointer flex justify-center' style={{
