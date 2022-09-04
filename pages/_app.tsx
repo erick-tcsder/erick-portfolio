@@ -10,6 +10,27 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
           <title>{"Hello I'm Erick"}</title>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta property='og:title' content='Frontend Dev. & UI/UX/Graphic Designer'/>
+          <meta property='og:description' content='I am a Frontend Developer and UI/UX/Graphic Designer. I have 3+ years of experience building amazing webites using the latest technologies suc ReactJS.'/>
+          <meta property='og:image' content='https://drive.google.com/file/d/1Pnku8HRgdD9QxbXk7Z4Fld8SiayZU9CA/view?usp=sharing'/>
+          <meta property='og:image:width' content='1200'/>
+          <meta property='og:image:height' content='630'/>
+          <meta property='og:image:alt' content='Erick Portfolio'/>
+          <meta property='og:url' content='https://erickfons.me/'/>
+          <meta property='og:type' content='website'/>
+          <meta property='og:site_name' content='Erick Portfolio'/>
+          <meta name='twitter:card' content='summary_large_image'/>
+          <meta name='twitter:site' content='@theCrusader0000'/>
+          <meta name='twitter:creator' content='@theCrusader0000'/>
+          <meta name='twitter:title' content='Frontend Dev. & UI/UX/Graphic Designer'/>
+          <meta name='twitter:description' content='I am a Frontend Developer and UI/UX/Graphic Designer. I have 3+ years of experience building amazing webites using the latest technologies suc ReactJS.'/>
+          <meta name='twitter:image' content='https://drive.google.com/file/d/1Pnku8HRgdD9QxbXk7Z4Fld8SiayZU9CA/view?usp=sharing'/>
+          <meta name='twitter:image:alt' content='Erick Portfolio'/>
+          <meta name='description' content='I am a Frontend Developer and UI/UX/Graphic Designer. I have 3+ years of experience building amazing webites using the latest technologies suc ReactJS.'/>
+          <meta name='keywords' content='Erick, Portfolio, Frontend, Developer, UI/UX, Graphic, Designer, Web, Development, Graphic, Design, UI/UX, Design, Cuba, ReactJS, NextJS'/>
+          <meta name='author' content='Erick Fonseca'/>
+          <meta name='robots' content='index, follow'/>
+          <meta name='googlebot' content='index, follow'/>
       </Head>
       <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALITICS_KEY}`} />
       <Script strategy="lazyOnload" id='google-analitics'>

@@ -26,9 +26,9 @@ export const ContactSection : React.FC<ContactSectionProps> = (props) => {
   })
   return (
     <div id='contact' ref={topSectionRef} className="py-[60px] md:py-[80px] lg:py-[100px] flex flex-col justify-center items-center">
-      <div className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
+      <h2 className="text-xl md:text-3xl font-bold bg-gradient-to-tl bg-clip-text text-transparent from-blue to-fuscia inline-flex my-5">
         {props.title}
-      </div>
+      </h2>
       <div className='text-base md:text-2xl text-center'>
         <RichTextRenderer
           content={props.section.fields.currentStatus}
