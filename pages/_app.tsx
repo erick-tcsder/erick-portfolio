@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-          <title>{"Hello I'm Erick"}</title>
+          <title>{"Erick Fonseca"}</title>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
           <meta property='og:title' content='Frontend Dev. & UI/UX/Graphic Designer'/>
           <meta property='og:description' content='3+ years of experience building amazing webites using the latest technologies such as ReactJS.'/>

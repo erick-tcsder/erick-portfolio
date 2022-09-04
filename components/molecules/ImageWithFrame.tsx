@@ -31,8 +31,6 @@ export const ImageWithFrame : React.FC<ImageWithFrameProps> = (props)=>{
       <Image
         src={'https:'+props.image.fields.file.url}
         alt={props.image.fields.file.fileName}
-        width={props.image.fields.file.details.image?.width}
-        height={props.image.fields.file.details.image?.height}
         layout='fill'
       />
       {props.children}

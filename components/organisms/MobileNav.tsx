@@ -4,12 +4,15 @@ import { TypeMenuItem } from "../../types/TypeMenuItem"
 import { Button } from "../atoms/Button"
 import { Icon } from "../atoms/Icon"
 import Link from "../atoms/Link"
+import LocaleSelect from "../molecules/LocaleSelect"
 
 export interface MobileNavProps {
   menuItems: TypeMenuItem[],
   socials: TypeSocial[],
   isOpen: boolean,
   handleHideMobile: ()=>void
+  locale: string;
+  allLocales: string[];
 }
 
 export const MobileNav : React.FC<MobileNavProps> = (props)=>{
@@ -21,6 +24,13 @@ export const MobileNav : React.FC<MobileNavProps> = (props)=>{
       <div/>
       <div className="my-auto w-100 flex flex-col gap-4 items-center justify-center">
         <div className="flex flex-col gap-y-5 font-mono self-center">
+          <div className="inline-flex">
+            <LocaleSelect
+              allLocales={props.allLocales}
+              locale={props.locale}
+              className='block md:hidden'
+            />
+          </div>
           {props.menuItems.map(item=>(
             <Link 
               key={item.sys.id} 

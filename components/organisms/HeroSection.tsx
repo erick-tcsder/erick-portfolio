@@ -13,6 +13,7 @@ import { useTopSection } from '../../hooks/useTopSection'
 export interface HeroSectionProps {
   section: TypeHeroSection,
   handleDownloadResume: ()=>void
+  locale: string
 }
 
 
@@ -22,13 +23,20 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
-      if(currentHeader.title === '01 Home') return
+      if(currentHeader.title === ('01 ' + (props.locale === 'es-ES' ? 'Sobre mi' : 'Who am I?'))) return
       handleChangeHeader({
         link: '#home',
-        title: '01 Home'
+        title: '01 ' + (props.locale === 'es-ES' ? 'Inicio' : 'Home')
       })
     }
   })
+
+  useEffect(()=>{
+    handleChangeHeader({
+      link: '#home',
+      title: '01 ' + (props.locale === 'es-ES' ? 'Inicio' : 'Home')
+    })
+  },[handleChangeHeader, props.locale])
 
   const actualJob = useRef<{act:string,index:number}>({
     act: "Frontend Developer",
@@ -67,10 +75,10 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
               p-1 px-4 text-white font-semibold rounded-md text-md lg:text-lg py-2 self-center'
               onClick={props.handleDownloadResume}
             >
-              Download Resume/CV
+              {props.locale === 'es-ES' ? 'Descargar Curriculum Vitae' :'Download Resume/CV'}
             </Button>
             <GradientButton
-              title='Send me an Email'
+              title={props.locale === 'es-ES' ? 'Envía un Mail' :'Send me an Email'}
               iconName='paper-plane'
               iconFamily='solid'
               className='text-md lg:text-xl self-center'

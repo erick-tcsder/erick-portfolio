@@ -16,6 +16,7 @@ import { DesignerSection } from "../../components/organisms/DesignerSection";
 import { ContactSection } from "../../components/organisms/ContactSection";
 import { useHeaderContext } from "../../hooks/useHeaderContext";
 import _ from "lodash";
+import dayjs from "dayjs";
 
 interface LocaleHomeProps {
   locale?: string;
@@ -67,7 +68,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
   return loading ? (
     <LoadingLayout
       loaderImage={props.loaderImage as Asset}
-      loadingText={"Loading ..."}
+      loadingText={props.locale==='es-ES' ? 'Cargando ...' : "Loading ..."}
     />
   ) : (
     <MainLayout
@@ -76,7 +77,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
       onDownloadResumeCLick={() => {
         saveFile(
           "https:" + content?.heroSection.fields.resume.fields.file.url,
-          props.locale ?? "en-US",
+          'erick-fonseca-portfolio-'+dayjs().format('YYYY')+(props.locale ?? "en-US"),
         );
       }}
       socials={content?.socials ?? []}
@@ -91,17 +92,19 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
             props.locale ?? "en-US",
           );
         }}
+        locale={props.locale ?? "en-US"}
       />
-      <InfoSection section={content?.infoSection as TypeInfoSection} />
+      <InfoSection section={content?.infoSection as TypeInfoSection} locale={props.locale ?? 'en-US'} />
       <TechsSection
         technologies={content?.technologies as TypeTechnology[]}
         title={
           props.locale === "es-ES"
-            ? "Softwares & Tecnologias"
+            ? "Softwares & Tecnologías"
             : "Softwares & Technologies"
         }
       />
       <DevExpSection
+        locale={props.locale ?? 'en-US'}
         exps={content?.developerExperience as TypeDeveloperExperience[]}
         title={
           props.locale === "es-ES"
@@ -124,6 +127,7 @@ const LocaleHome: NextPage<LocaleHomeProps> = (props) => {
         behanceButtonLink={content?.socials.find(s=>s.fields.name.toLowerCase() === 'behance')?.fields.url ?? '#'}
       />
       <ContactSection
+        locale={props.locale ?? 'en-US'}
         section={content?.contactSection as TypeContactSection}
         title={
           props.locale === "es-ES"

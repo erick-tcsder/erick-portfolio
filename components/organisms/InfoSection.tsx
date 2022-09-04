@@ -19,10 +19,10 @@ export const InfoSection : React.FC<InfoSectionProps> = (props) => {
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
-      if(currentHeader.title === '02 Who am I?') return
+      if(currentHeader.title === ('02 ' + (props.locale === 'es-ES' ? 'Sobre mi' : 'Who am I?'))) return
       handleChangeHeader({
         link: '#personal-info',
-        title: '02 Who am I?'
+        title: '02 ' + (props.locale === 'es-ES' ? 'Sobre mi' : 'Who am I?')
       })
     }
   })

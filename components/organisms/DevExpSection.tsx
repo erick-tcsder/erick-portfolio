@@ -12,6 +12,7 @@ import { RichTextRenderer } from '../molecules/RichTextRenderer';
 export interface DevExpSectionProps {
   exps: TypeDeveloperExperience[];
   title: string;
+  locale: string;
 }
 
 export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
@@ -20,10 +21,10 @@ export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
   useTopSection(topSectionRef, {
     top: [-100,100],
     onTop: ()=>{
-      if(currentHeader.title === '03 Experience') return
+      if(currentHeader.title === ('03 ' + (props.locale === 'es-ES' ? 'Experiencia' : 'Experience'))) return
       handleChangeHeader({
         link: '#experience',
-        title: '03 Experience'
+        title: '03 ' + (props.locale === 'es-ES' ? 'Experiencia' : 'Experience')
       })
     }
   })
