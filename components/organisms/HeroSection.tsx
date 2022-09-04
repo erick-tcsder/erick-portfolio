@@ -78,7 +78,7 @@ const HeroSection : React.FC<HeroSectionProps> = (props) => {
               {props.locale === 'es-ES' ? 'Descargar Curriculum Vitae' :'Download Resume/CV'}
             </Button>
             <GradientButton
-              title={props.locale === 'es-ES' ? 'Envía un Mail' :'Send me an Email'}
+              title={props.locale === 'es-ES' ? 'Envía un Mail' :'Send an Email'}
               iconName='paper-plane'
               iconFamily='solid'
               className='text-md lg:text-xl self-center'
