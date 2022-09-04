@@ -36,7 +36,7 @@ export const ContactSection : React.FC<ContactSectionProps> = (props) => {
         />
       </div>
       <GradientButton
-        title='Send me an Email'
+        title={props.locale === 'es-ES' ? 'Envía un Mail' :'Send an Email'}
         iconName='paper-plane'
         iconFamily='solid'
         className='text-base md:text-2xl my-3 md:my-16'
