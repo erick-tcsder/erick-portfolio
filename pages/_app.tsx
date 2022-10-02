@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name='author' content='Erick Fonseca'/>
           <meta name='robots' content='index, follow'/>
           <meta name='googlebot' content='index, follow'/>
+          <meta name="google-site-verification" content="OA4QQ4tNPVA9s_Mf-mwc8sb-sON0_NNvJO9aSVuaEg0" />
       </Head>
       <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALITICS_KEY}`} />
       <Script strategy="lazyOnload" id='google-analitics'>
