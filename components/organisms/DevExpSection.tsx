@@ -36,15 +36,11 @@ export const DevExpSection : React.FC<DevExpSectionProps> = (props) => {
         </h2>
       </div>
       <div className='w-full flex flex-col gap-y-24 mt-3 md:mt-10'>
-      {props.exps.map((exp)=>(
+      {props.exps.sort((a,b)=>dayjs(b.fields.startDate).diff(dayjs(a.fields.startDate))).map((exp)=>(
         <div key={exp.sys.id} className='grid grid-cols-1 lg:grid-cols-5'>
           <div className="col-span-1 lg:col-span-3 order-2 self-center mt-10 lg:mt-0">
             <div className='flex flex-row justify-start gap-x-4'>
               <span className='text-base md:text-2xl font-mono font-bold'>{exp.fields.title}</span>
-              <RatingStars
-                rating={exp.fields.rating ?? 0}
-                className='text-sm md:text-lg self-center'
-              />
             </div>
             <div className='flex flex-row flex-wrap justify-start mt-3 gap-1 md:gap-3 text-xs md:text-sm'>
               <span className='text-light bg-dark font-mono py-1 px-3 rounded-md self-center'>
